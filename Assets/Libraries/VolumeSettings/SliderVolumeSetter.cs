@@ -14,6 +14,8 @@ namespace Pospec.VolumeSettings
 
         private void OnValidate()
         {
+            if (slider == null)
+                return;
             slider.minValue = 0.0001f;
             slider.maxValue = 1;
             slider.wholeNumbers = false;
