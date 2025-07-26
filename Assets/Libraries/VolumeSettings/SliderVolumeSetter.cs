@@ -1,0 +1,33 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace Pospec.VolumeSettings
+{
+    public class SliderVolumeSetter : VolumeSetter
+    {
+        [SerializeField] private Slider slider;
+
+        private void Start()
+        {
+            slider.onValueChanged.AddListener(SetVolume);
+        }
+
+        private void OnValidate()
+        {
+            slider.minValue = 0.0001f;
+            slider.maxValue = 1;
+            slider.wholeNumbers = false;
+            slider.interactable = true;
+        }
+
+        private void OnDestroy()
+        {
+            slider.onValueChanged.RemoveListener(SetVolume);
+        }
+
+        public override void UpdateUI(float volume)
+        {
+            slider.value = volume;
+        }
+    }
+}
