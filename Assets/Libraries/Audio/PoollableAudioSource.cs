@@ -10,7 +10,10 @@ namespace Pospec.Audio
     /// </summary>
     public class PoollableAudioSource : MonoBehaviour
     {
-        private IObjectPool<PoollableAudioSource> pool; [SerializeField] private AudioSource source; public PoollableAudioSource Setup(IObjectPool<PoollableAudioSource> pool)
+        [SerializeField] private AudioSource source;
+        private IObjectPool<PoollableAudioSource> pool;
+        
+        public PoollableAudioSource Setup(IObjectPool<PoollableAudioSource> pool)
         {
             this.pool = pool;
             return this;
@@ -20,7 +23,8 @@ namespace Pospec.Audio
         {
             source.spatialBlend = 0;
             audioEvent.Play(source);
-            StartCoroutine(ReturnToPool());
+            if (!source.loop)
+                StartCoroutine(ReturnToPool(source.clip.length));
         }
 
         public void PlayFrom(AudioEvent audioEvent, Vector3 pos)
@@ -28,12 +32,13 @@ namespace Pospec.Audio
             source.spatialBlend = 1;
             transform.position = pos;
             audioEvent.Play(source);
-            StartCoroutine(ReturnToPool());
+            if (!source.loop)
+                StartCoroutine(ReturnToPool(source.clip.length));
         }
 
-        private IEnumerator ReturnToPool()
+        private IEnumerator ReturnToPool(float clipLength)
         {
-            yield return new WaitUntil(() => !source.isPlaying);
+            yield return new WaitForSeconds(clipLength);
             if (pool != null)
                 pool.Release(this);
         }

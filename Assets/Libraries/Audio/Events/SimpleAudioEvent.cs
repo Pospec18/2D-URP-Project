@@ -14,6 +14,8 @@ namespace Pospec.Audio
 		[MinMaxRange(0, 2)]
 		public RangedFloat pitch;
 
+		public bool loop;
+
 		public override void Play(AudioSource source)
 		{
 			if (clips.Length == 0) return;
@@ -21,6 +23,7 @@ namespace Pospec.Audio
 			source.clip = clips[Random.Range(0, clips.Length)];
 			source.volume = Random.Range(volume.minValue, volume.maxValue);
 			source.pitch = Random.Range(pitch.minValue, pitch.maxValue);
+			source.loop = loop;
 			source.Play();
 		}
 	}
