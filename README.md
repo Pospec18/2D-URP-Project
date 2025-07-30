@@ -6,5 +6,5 @@ Custom template for Unity Project
   - [ ] Side-Scrolling character
 - [x] Audio Helpers
 - [ ] Common helper functions
-- [ ] Save manager
-- [ ] Common Game Settings
+- [x] Save manager
+- [x] Common Game Settings
