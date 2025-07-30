@@ -1,6 +1,6 @@
 using System;
 
-namespace Pospec.Helper
+namespace Pospec.Common
 {
     public static class BuildPlatformInfo
     {
@@ -37,8 +37,6 @@ namespace Pospec.Helper
 
         public static bool ContainsCurrentPlatform(this BuildPlatform mask)
         {
-            if (mask == BuildPlatform.Unknown)
-                return false;
             return current == (current & mask);
         }
     }

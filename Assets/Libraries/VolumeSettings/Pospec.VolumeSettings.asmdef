@@ -1,6 +1,6 @@
 {
     "name": "Pospec.VolumeSettings",
-    "rootNamespace": "",
+    "rootNamespace": "Pospec.VolumeSettings",
     "references": [
         "GUID:bc48d32e66ab1bd4d9eb651709c12051"
     ],

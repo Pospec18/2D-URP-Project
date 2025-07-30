@@ -1,6 +1,6 @@
 {
     "name": "Pospec.Audio.Editor",
-    "rootNamespace": "",
+    "rootNamespace": "Pospec.Audio.Editor",
     "references": [
         "GUID:b3efd2e664af02848950b87d989c7038"
     ],

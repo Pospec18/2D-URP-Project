@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Pospec.Helper
+namespace Pospec.Common
 {
     public class ExcludeObjectOnPlatforms : MonoBehaviour
     {
